@@ -35,6 +35,5 @@ DIR_PATH=$(readlink -f "$SCRIPT_DIR")
 sudo apt update && sudo apt upgrade -y
 
 # mettre le clavier en fr
-sudo sed -i 's/XKBLAYOUT="us"/XKBLAYOUT="fr"/' /etc/default/keyboard
-sudo dpkg-reconfigure -f noninteractive keyboard-configuration
 cp "$DIR_PATH/dots/XX-keyboard.conf.example"  ~/.config/sway/config.d/
+cp "$DIR_PATH/dots/sway-input-config/settings" ~/.config/sway-input-config
