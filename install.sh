@@ -31,5 +31,5 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
 
 DIR_PATH=$(readlink -f "$SCRIPT_DIR/../../")
 
-sudo apt update && upgrade -y
+sudo apt update && sudo apt upgrade -y
 cp $DIR_PATH/dots/XX-keyboard.conf.example
