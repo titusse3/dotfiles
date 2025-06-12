@@ -49,3 +49,16 @@ if [[ -f "$REMOVE_LIST" ]]; then
         sudo apt remove -y "$app" || echo "Impossible de supprimer $app"
     done < "$REMOVE_LIST"
 fi
+
+sudo apt autoremove
+
+# instalation application du fichier install_apps
+
+INSTALL_LIST="$DIR_PATH/remove_apps"
+if [[ -f "$INSTALL_LIST" ]]; then
+    while IFS= read -r app; do
+        [[ -z "$app" || "$app" =~ ^# ]] && continue
+        echo "Instalation de $app..."
+        sudo apt install -y "$app" || echo "Impossible d'installer $app"
+    done < "$INSTALL_LIST"
+fi
