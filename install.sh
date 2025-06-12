@@ -29,7 +29,7 @@ echo -e "${NC}"
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
 
-DIR_PATH=$(readlink -f "$SCRIPT_DIR/../../")
+DIR_PATH=$(readlink -f "$SCRIPT_DIR")
 
 # mis a jour
 sudo apt update && sudo apt upgrade -y
