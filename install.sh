@@ -54,7 +54,7 @@ sudo apt autoremove -y
 
 # instalation application du fichier install_apps
 
-INSTALL_LIST="$DIR_PATH/remove_apps"
+INSTALL_LIST="$DIR_PATH/install_apps"
 if [[ -f "$INSTALL_LIST" ]]; then
   while IFS= read -r app; do
     # ignorer les lignes vides ou les commentaires (lignes commençant par un ou plusieurs espaces suivi de #)
@@ -62,5 +62,4 @@ if [[ -f "$INSTALL_LIST" ]]; then
     echo "Installation de $app..."
     sudo apt install -y "$app" || echo "Impossible d'installer $app"
   done < "$INSTALL_LIST"
-fi
 fi
