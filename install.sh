@@ -38,3 +38,14 @@ sudo apt update && sudo apt upgrade -y
 sudo ln -s "$DIR_PATH/dots/sway/default-keyboard.conf"
 
 sway reload
+
+# suppression application du fichier remove_apps
+
+REMOVE_LIST="$DIR_PATH/remove_apps"
+if [[ -f "$REMOVE_LIST" ]]; then
+    while IFS= read -r app; do
+        [[ -z "$app" || "$app" =~ ^# ]] && continue
+        echo "Suppression de $app..."
+        sudo apt remove -y "$app" || echo "Impossible de supprimer $app"
+    done < "$REMOVE_LIST"
+fi
