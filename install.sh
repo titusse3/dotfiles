@@ -50,15 +50,17 @@ if [[ -f "$REMOVE_LIST" ]]; then
     done < "$REMOVE_LIST"
 fi
 
-sudo apt autoremove
+sudo apt autoremove -y
 
 # instalation application du fichier install_apps
 
 INSTALL_LIST="$DIR_PATH/remove_apps"
 if [[ -f "$INSTALL_LIST" ]]; then
-    while IFS= read -r app; do
-        [[ -z "$app" || "$app" =~ ^# ]] && continue
-        echo "Instalation de $app..."
-        sudo apt install -y "$app" || echo "Impossible d'installer $app"
-    done < "$INSTALL_LIST"
+  while IFS= read -r app; do
+    # ignorer les lignes vides ou les commentaires (lignes commençant par un ou plusieurs espaces suivi de #)
+    [[ -z "$app" || "$app" =~ ^[[:space:]]*# ]] && continue
+    echo "Installation de $app..."
+    sudo apt install -y "$app" || echo "Impossible d'installer $app"
+  done < "$INSTALL_LIST"
+fi
 fi
