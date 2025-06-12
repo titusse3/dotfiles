@@ -35,7 +35,7 @@ DIR_PATH=$(readlink -f "$SCRIPT_DIR")
 sudo apt update && sudo apt upgrade -y
 
 # mettre le clavier en fr
-sudo ln -s "$DIR_PATH/dots/sway/default-keyboard.conf" /etc/sway/inputs/
+sudo ln -sf "$DIR_PATH/dots/sway/default-keyboard.conf" /etc/sway/inputs/
 
 sway reload
 
