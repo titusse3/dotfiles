@@ -31,5 +31,8 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
 
 DIR_PATH=$(readlink -f "$SCRIPT_DIR/../../")
 
+# mis a jour
 sudo apt update && sudo apt upgrade -y
-cp $DIR_PATH/dots/XX-keyboard.conf.example
+
+# mettre le clavier en fr
+cp "$DIR_PATH/dots/XX-keyboard.conf.example"
